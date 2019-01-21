@@ -1,0 +1,1 @@
+A small application that allows the user to track combat initiative. It is meant mainly for use with D&D.
