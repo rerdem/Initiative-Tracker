@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 namespace InitiativeTracker
 {
-    public class CreatureControls : UserControl
+    public class CreatureControl : UserControl, IComparable<CreatureControl>
     {
         // Create the controls.
         private TextBox nameText;
@@ -17,7 +17,7 @@ namespace InitiativeTracker
         private Panel creaturePanel;
 
         // Define the constructor.
-        public CreatureControls()
+        public CreatureControl()
         {
             InitializeComponent();
         }
@@ -85,20 +85,11 @@ namespace InitiativeTracker
 
             // Size the user control.
             Size = new Size(400, 67);
+        }
 
-
-            //// Add the controls to the user control.
-            //Controls.AddRange(new Control[]
-            //{
-            //deleteButton,
-            //nameLabel,
-            //nameText,
-            //initiativeLabel,
-            //initiativeValue
-            //});
-
-            //// Size the user control.
-            //Size = new Size(400, 64);
+        public int CompareTo(CreatureControl other)
+        {
+            return initiativeValue.Value.CompareTo(other.initiativeValue.Value);
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)

@@ -20,12 +20,16 @@ namespace InitiativeTracker
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            flowLayoutPanel.Controls.Add(new CreatureControls());
+            flowLayoutPanel.Controls.Add(new CreatureControl());
         }
 
         private void sortButton_Click(object sender, EventArgs e)
         {
-            
+            List<CreatureControl> creatureList = flowLayoutPanel.Controls.Cast<CreatureControl>().ToList();
+            creatureList.Sort();
+            creatureList.Reverse();
+            flowLayoutPanel.Controls.Clear();
+            flowLayoutPanel.Controls.AddRange(creatureList.ToArray());
         }
     }
 }

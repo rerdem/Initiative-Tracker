@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CreatureControls.cs">
+    <Compile Include="CreatureControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="frmMainWindow.cs">
