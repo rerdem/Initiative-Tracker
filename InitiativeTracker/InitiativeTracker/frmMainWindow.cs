@@ -46,11 +46,6 @@ namespace InitiativeTracker
         {
             creatureManager.sortByDescendingInitiative();
             refreshPanel();
-            //List<CreatureControl> creatureList = flowLayoutPanel.Controls.Cast<CreatureControl>().ToList();
-            //creatureList.Sort();
-            //creatureList.Reverse();
-            //flowLayoutPanel.Controls.Clear();
-            //flowLayoutPanel.Controls.AddRange(creatureList.ToArray());
         }
     }
 }
