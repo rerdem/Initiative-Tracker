@@ -13,23 +13,44 @@ namespace InitiativeTracker
 {
     public partial class frmMainWindow : Form
     {
-        public frmMainWindow()
+        private CreatureManager creatureManager;
+
+        public frmMainWindow(CreatureManager inputCreatureManager)
         {
+            creatureManager = inputCreatureManager;
             InitializeComponent();
+        }
+
+        private void refreshPanel()
+        {
+            foreach (CreatureControl c in flowLayoutPanel.Controls)
+            {
+                c.Dispose();
+            }
+
+            flowLayoutPanel.Controls.Clear();
+
+            foreach (Creature creature in creatureManager.CreatureList)
+            {
+                flowLayoutPanel.Controls.Add(new CreatureControl(creatureManager, creature.Id, creature.Name, creature.Initiative));
+            }
         }
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            flowLayoutPanel.Controls.Add(new CreatureControl());
+            creatureManager.add();
+            refreshPanel();
         }
 
         private void sortButton_Click(object sender, EventArgs e)
         {
-            List<CreatureControl> creatureList = flowLayoutPanel.Controls.Cast<CreatureControl>().ToList();
-            creatureList.Sort();
-            creatureList.Reverse();
-            flowLayoutPanel.Controls.Clear();
-            flowLayoutPanel.Controls.AddRange(creatureList.ToArray());
+            creatureManager.sortByDescendingInitiative();
+            refreshPanel();
+            //List<CreatureControl> creatureList = flowLayoutPanel.Controls.Cast<CreatureControl>().ToList();
+            //creatureList.Sort();
+            //creatureList.Reverse();
+            //flowLayoutPanel.Controls.Clear();
+            //flowLayoutPanel.Controls.AddRange(creatureList.ToArray());
         }
     }
 }

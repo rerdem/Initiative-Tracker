@@ -14,9 +14,11 @@ namespace InitiativeTracker
         [STAThread]
         static void Main()
         {
+            CreatureManager creatureManager = new CreatureManager();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMainWindow());
+            Application.Run(new frmMainWindow(creatureManager));
         }
     }
 }

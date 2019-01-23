@@ -6,8 +6,10 @@ using System.ComponentModel;
 
 namespace InitiativeTracker
 {
-    public class CreatureControl : UserControl, IComparable<CreatureControl>
+    public class CreatureControl : UserControl
     {
+        private CreatureManager creatureManager;
+
         // Create the controls.
         private TextBox nameText;
         private NumericUpDown initiativeValue;
@@ -15,11 +17,19 @@ namespace InitiativeTracker
         private Label initiativeLabel;
         private Button deleteButton;
         private Panel creaturePanel;
+        
+        public int CreatureId { get; private set; }
 
         // Define the constructor.
-        public CreatureControl()
+        public CreatureControl(CreatureManager inputList, int inputId, string inputName, int inputInitiative)
         {
-            InitializeComponent();
+            creatureManager = inputList;
+            InitializeComponent(inputId, inputName, inputInitiative);
+        }
+
+        public string getName()
+        {
+            return nameText.Text;
         }
 
         public int getInitiative()
@@ -28,9 +38,11 @@ namespace InitiativeTracker
         }
 
         // Initialize the control elements.
-        public void InitializeComponent()
+        public void InitializeComponent(int inputId, string inputName, int inputInitiative)
         {
-            // Initialize the controls.
+            CreatureId = inputId;
+
+           // Initialize the controls.
             creaturePanel = new Panel();
             nameText = new TextBox();
             initiativeValue = new NumericUpDown();
@@ -46,6 +58,7 @@ namespace InitiativeTracker
             deleteButton.Location = new Point(3, 3);
             deleteButton.Size = new Size(58, 58);
             deleteButton.Text = "X";
+            deleteButton.TabStop = false;
             deleteButton.Click += DeleteButton_Click;
 
             nameLabel.Location = new Point(64, 3);
@@ -55,8 +68,9 @@ namespace InitiativeTracker
 
             nameText.Location = new Point(64, 28);
             nameText.Size = new Size(250, 30);
-            nameText.Text = "Name";
+            nameText.Text = inputName;
             nameText.Font = new Font(nameText.Font.FontFamily, 16);
+            nameText.TextChanged += NameText_TextChanged;
 
             initiativeLabel.Location = new Point(317, 3);
             initiativeLabel.Size = new Size(80, 25);
@@ -69,7 +83,8 @@ namespace InitiativeTracker
             initiativeValue.ReadOnly = true;
             initiativeValue.Minimum = -99;
             initiativeValue.Maximum = 99;
-            initiativeValue.Value = 0;
+            initiativeValue.Value = inputInitiative;
+            initiativeValue.ValueChanged += InitiativeValue_ValueChanged;
 
             // Add the controls to the user control.
             creaturePanel.Controls.AddRange(new Control[]
@@ -87,13 +102,19 @@ namespace InitiativeTracker
             Size = new Size(400, 67);
         }
 
-        public int CompareTo(CreatureControl other)
+        private void InitiativeValue_ValueChanged(object sender, EventArgs e)
         {
-            return initiativeValue.Value.CompareTo(other.initiativeValue.Value);
+            creatureManager.updateInitiative(CreatureId, (int) initiativeValue.Value);
+        }
+
+        private void NameText_TextChanged(object sender, EventArgs e)
+        {
+            creatureManager.updateName(CreatureId, nameText.Text);
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
+            creatureManager.remove(CreatureId);
             this.Dispose();
         }
     }
