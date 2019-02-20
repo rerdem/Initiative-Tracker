@@ -12,8 +12,10 @@ namespace InitiativeTracker
 
         // Create the controls.
         private TextBox nameText;
+        private TextBox hpText;
         private NumericUpDown initiativeValue;
         private Label nameLabel;
+        private Label hpLabel;
         private Label initiativeLabel;
         private Button deleteButton;
         private Panel creaturePanel;
@@ -21,10 +23,10 @@ namespace InitiativeTracker
         public int CreatureId { get; private set; }
 
         // Define the constructor.
-        public CreatureControl(CreatureManager inputList, int inputId, string inputName, int inputInitiative)
+        public CreatureControl(CreatureManager inputList, int inputId, string inputName, string inputHP, int inputInitiative)
         {
             creatureManager = inputList;
-            InitializeComponent(inputId, inputName, inputInitiative);
+            InitializeComponent(inputId, inputName, inputHP, inputInitiative);
         }
 
         public string getName()
@@ -38,15 +40,17 @@ namespace InitiativeTracker
         }
 
         // Initialize the control elements.
-        public void InitializeComponent(int inputId, string inputName, int inputInitiative)
+        public void InitializeComponent(int inputId, string inputName, string inputHP, int inputInitiative)
         {
             CreatureId = inputId;
 
            // Initialize the controls.
             creaturePanel = new Panel();
             nameText = new TextBox();
+            hpText = new TextBox();
             initiativeValue = new NumericUpDown();
             nameLabel = new Label();
+            hpLabel = new Label();
             initiativeLabel = new Label();
             deleteButton = new Button();
 
@@ -67,17 +71,28 @@ namespace InitiativeTracker
             nameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 
             nameText.Location = new Point(64, 28);
-            nameText.Size = new Size(250, 30);
+            nameText.Size = new Size(210, 30);
             nameText.Text = inputName;
             nameText.Font = new Font(nameText.Font.FontFamily, 16);
             nameText.TextChanged += NameText_TextChanged;
 
-            initiativeLabel.Location = new Point(317, 3);
+            hpLabel.Location = new Point(277, 3);
+            hpLabel.Size = new Size(50, 25);
+            hpLabel.Text = "HP:";
+            hpLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+
+            hpText.Location = new Point(277, 28);
+            hpText.Size = new Size(50, 30);
+            hpText.Text = inputHP;
+            hpText.Font = new Font(nameText.Font.FontFamily, 16);
+            hpText.TextChanged += HPText_TextChanged;
+
+            initiativeLabel.Location = new Point(330, 3);
             initiativeLabel.Size = new Size(80, 25);
             initiativeLabel.Text = "Initiative:";
             initiativeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 
-            initiativeValue.Location = new Point(317, 28);
+            initiativeValue.Location = new Point(330, 28);
             initiativeValue.Size = new Size(50, 30);
             initiativeValue.Font = new Font(initiativeValue.Font.FontFamily, 16);
             initiativeValue.ReadOnly = true;
@@ -92,6 +107,8 @@ namespace InitiativeTracker
             deleteButton,
             nameLabel,
             nameText,
+            hpLabel,
+            hpText,
             initiativeLabel,
             initiativeValue
             });
@@ -110,6 +127,11 @@ namespace InitiativeTracker
         private void NameText_TextChanged(object sender, EventArgs e)
         {
             creatureManager.updateName(CreatureId, nameText.Text);
+        }
+
+        private void HPText_TextChanged(object sender, EventArgs e)
+        {
+            creatureManager.updateHP(CreatureId, hpText.Text);
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)

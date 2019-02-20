@@ -21,11 +21,11 @@ namespace InitiativeTracker
 
         public void add()
         {
-            creatureList.Add(new Creature(idCounter, "Name", 0));
+            creatureList.Add(new Creature(idCounter, "Name", "0", 0));
             idCounter++;
         }
 
-        public void add(string name, int initiative)
+        public void add(string name, string hp, int initiative)
         {
             if (initiative > 99)
             {
@@ -37,7 +37,7 @@ namespace InitiativeTracker
                 initiative = -99;
             }
 
-            creatureList.Add(new Creature(idCounter, name, initiative));
+            creatureList.Add(new Creature(idCounter, name, hp, initiative));
             idCounter++;
         }
 
@@ -45,6 +45,12 @@ namespace InitiativeTracker
         {
             int index = creatureList.FindIndex(c => c.Id == id);
             creatureList.ElementAt(index).updateName(name);
+        }
+
+        public void updateHP(int id, string hp)
+        {
+            int index = creatureList.FindIndex(c => c.Id == id);
+            creatureList.ElementAt(index).updateHP(hp);
         }
 
         public void updateInitiative(int id, int initiative)
