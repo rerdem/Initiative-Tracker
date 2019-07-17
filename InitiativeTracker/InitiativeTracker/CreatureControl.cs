@@ -58,59 +58,60 @@ namespace InitiativeTracker
             creaturePanel.BorderStyle = BorderStyle.FixedSingle;
             creaturePanel.Location = new Point(0, 0);
             creaturePanel.Size = new Size(400, 67);
-
-            deleteButton.Location = new Point(3, 3);
-            deleteButton.Size = new Size(58, 58);
-            deleteButton.Text = "X";
-            deleteButton.TabStop = false;
-            deleteButton.Click += DeleteButton_Click;
-
-            nameLabel.Location = new Point(64, 3);
+            
+            nameLabel.Location = new Point(3, 3);
             nameLabel.Size = new Size(80, 25);
             nameLabel.Text = "Name:";
             nameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 
-            nameText.Location = new Point(64, 28);
+            nameText.Location = new Point(3, 28);
             nameText.Size = new Size(210, 30);
             nameText.Text = inputName;
             nameText.Font = new Font(nameText.Font.FontFamily, 16);
             nameText.TextChanged += NameText_TextChanged;
 
-            hpLabel.Location = new Point(277, 3);
+            hpLabel.Location = new Point(216, 3);
             hpLabel.Size = new Size(50, 25);
             hpLabel.Text = "HP:";
             hpLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 
-            hpText.Location = new Point(277, 28);
+            hpText.Location = new Point(216, 28);
             hpText.Size = new Size(50, 30);
             hpText.Text = inputHP;
             hpText.Font = new Font(nameText.Font.FontFamily, 16);
             hpText.TextChanged += HPText_TextChanged;
 
-            initiativeLabel.Location = new Point(330, 3);
-            initiativeLabel.Size = new Size(80, 25);
+            initiativeLabel.Location = new Point(269, 3);
+            initiativeLabel.Size = new Size(50, 25);
             initiativeLabel.Text = "Initiative:";
             initiativeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 
-            initiativeValue.Location = new Point(330, 28);
+            initiativeValue.Location = new Point(269, 28);
             initiativeValue.Size = new Size(50, 30);
             initiativeValue.Font = new Font(initiativeValue.Font.FontFamily, 16);
-            initiativeValue.ReadOnly = true;
+            //initiativeValue.ReadOnly = true;
             initiativeValue.Minimum = -99;
             initiativeValue.Maximum = 99;
             initiativeValue.Value = inputInitiative;
             initiativeValue.ValueChanged += InitiativeValue_ValueChanged;
 
+            deleteButton.Location = new Point(332, 3);
+            deleteButton.Size = new Size(58, 58);
+            deleteButton.Text = "X";
+            deleteButton.Font = new Font(deleteButton.Font.Name, 20, FontStyle.Bold);
+            deleteButton.TabStop = false;
+            deleteButton.Click += DeleteButton_Click;
+
             // Add the controls to the user control.
             creaturePanel.Controls.AddRange(new Control[]
             {
-            deleteButton,
             nameLabel,
             nameText,
             hpLabel,
             hpText,
             initiativeLabel,
-            initiativeValue
+            initiativeValue,
+            deleteButton
             });
 
             Controls.Add(creaturePanel);

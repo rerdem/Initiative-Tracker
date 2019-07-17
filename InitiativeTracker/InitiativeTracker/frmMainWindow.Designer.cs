@@ -78,7 +78,6 @@
             this.flowLayoutPanel.Name = "flowLayoutPanel";
             this.flowLayoutPanel.Size = new System.Drawing.Size(410, 481);
             this.flowLayoutPanel.TabIndex = 1;
-            this.flowLayoutPanel.WrapContents = false;
             // 
             // frmMainWindow
             // 
