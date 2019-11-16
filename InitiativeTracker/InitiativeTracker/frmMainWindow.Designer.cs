@@ -28,44 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.addButton = new System.Windows.Forms.Button();
-            this.sortButton = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainWindow));
             this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel1.SuspendLayout();
+            this.mainToolStrip = new System.Windows.Forms.ToolStrip();
+            this.sortStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.addStripButton = new System.Windows.Forms.ToolStripButton();
+            this.exportStripButton = new System.Windows.Forms.ToolStripButton();
+            this.importStripButton = new System.Windows.Forms.ToolStripSplitButton();
+            this.importOnlyCreaturesItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importOnlyPlayersItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mainToolStrip.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.panel1.Controls.Add(this.addButton);
-            this.panel1.Controls.Add(this.sortButton);
-            this.panel1.Location = new System.Drawing.Point(12, 499);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(410, 50);
-            this.panel1.TabIndex = 0;
-            // 
-            // addButton
-            // 
-            this.addButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addButton.Location = new System.Drawing.Point(207, 3);
-            this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(200, 44);
-            this.addButton.TabIndex = 0;
-            this.addButton.Text = "+";
-            this.addButton.UseVisualStyleBackColor = true;
-            this.addButton.Click += new System.EventHandler(this.addButton_Click);
-            // 
-            // sortButton
-            // 
-            this.sortButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sortButton.Location = new System.Drawing.Point(3, 3);
-            this.sortButton.Name = "sortButton";
-            this.sortButton.Size = new System.Drawing.Size(200, 44);
-            this.sortButton.TabIndex = 1;
-            this.sortButton.Text = "SORT";
-            this.sortButton.UseVisualStyleBackColor = true;
-            this.sortButton.Click += new System.EventHandler(this.sortButton_Click);
             // 
             // flowLayoutPanel
             // 
@@ -74,31 +48,122 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel.AutoScroll = true;
             this.flowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel.Location = new System.Drawing.Point(12, 12);
+            this.flowLayoutPanel.Location = new System.Drawing.Point(12, 35);
             this.flowLayoutPanel.Name = "flowLayoutPanel";
-            this.flowLayoutPanel.Size = new System.Drawing.Size(410, 481);
+            this.flowLayoutPanel.Size = new System.Drawing.Size(410, 610);
             this.flowLayoutPanel.TabIndex = 1;
+            // 
+            // mainToolStrip
+            // 
+            this.mainToolStrip.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.mainToolStrip.AutoSize = false;
+            this.mainToolStrip.BackColor = System.Drawing.SystemColors.Control;
+            this.mainToolStrip.Dock = System.Windows.Forms.DockStyle.None;
+            this.mainToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.mainToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.importStripButton,
+            this.exportStripButton,
+            this.toolStripSeparator1,
+            this.addStripButton,
+            this.sortStripButton});
+            this.mainToolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
+            this.mainToolStrip.Location = new System.Drawing.Point(12, 0);
+            this.mainToolStrip.Name = "mainToolStrip";
+            this.mainToolStrip.Size = new System.Drawing.Size(410, 32);
+            this.mainToolStrip.TabIndex = 2;
+            this.mainToolStrip.Text = "toolStrip1";
+            // 
+            // sortStripButton
+            // 
+            this.sortStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.sortStripButton.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.sortStripButton.Image = ((System.Drawing.Image)(resources.GetObject("sortStripButton.Image")));
+            this.sortStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.sortStripButton.Name = "sortStripButton";
+            this.sortStripButton.Size = new System.Drawing.Size(55, 29);
+            this.sortStripButton.Text = "Sort";
+            this.sortStripButton.Click += new System.EventHandler(this.sortStripButton_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 32);
+            // 
+            // addStripButton
+            // 
+            this.addStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.addStripButton.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.addStripButton.Image = ((System.Drawing.Image)(resources.GetObject("addStripButton.Image")));
+            this.addStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.addStripButton.Name = "addStripButton";
+            this.addStripButton.Size = new System.Drawing.Size(53, 29);
+            this.addStripButton.Text = "Add";
+            this.addStripButton.Click += new System.EventHandler(this.addStripButton_Click);
+            // 
+            // exportStripButton
+            // 
+            this.exportStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.exportStripButton.Enabled = false;
+            this.exportStripButton.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.exportStripButton.Image = ((System.Drawing.Image)(resources.GetObject("exportStripButton.Image")));
+            this.exportStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.exportStripButton.Name = "exportStripButton";
+            this.exportStripButton.Size = new System.Drawing.Size(77, 29);
+            this.exportStripButton.Text = "Export";
+            // 
+            // importStripButton
+            // 
+            this.importStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.importStripButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.importOnlyCreaturesItem,
+            this.importOnlyPlayersItem});
+            this.importStripButton.Enabled = false;
+            this.importStripButton.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.importStripButton.Image = ((System.Drawing.Image)(resources.GetObject("importStripButton.Image")));
+            this.importStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.importStripButton.Name = "importStripButton";
+            this.importStripButton.Size = new System.Drawing.Size(91, 29);
+            this.importStripButton.Text = "Import";
+            // 
+            // importOnlyCreaturesItem
+            // 
+            this.importOnlyCreaturesItem.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.importOnlyCreaturesItem.Name = "importOnlyCreaturesItem";
+            this.importOnlyCreaturesItem.Size = new System.Drawing.Size(196, 22);
+            this.importOnlyCreaturesItem.Text = "Import Only Creatures";
+            // 
+            // importOnlyPlayersItem
+            // 
+            this.importOnlyPlayersItem.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.importOnlyPlayersItem.Name = "importOnlyPlayersItem";
+            this.importOnlyPlayersItem.Size = new System.Drawing.Size(196, 22);
+            this.importOnlyPlayersItem.Text = "Import Only Players";
             // 
             // frmMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 561);
+            this.ClientSize = new System.Drawing.Size(434, 657);
+            this.Controls.Add(this.mainToolStrip);
             this.Controls.Add(this.flowLayoutPanel);
-            this.Controls.Add(this.panel1);
             this.Name = "frmMainWindow";
             this.Text = "Initiative Tracker";
-            this.panel1.ResumeLayout(false);
+            this.mainToolStrip.ResumeLayout(false);
+            this.mainToolStrip.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button addButton;
-        private System.Windows.Forms.Button sortButton;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
+        private System.Windows.Forms.ToolStrip mainToolStrip;
+        private System.Windows.Forms.ToolStripButton sortStripButton;
+        private System.Windows.Forms.ToolStripButton exportStripButton;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton addStripButton;
+        private System.Windows.Forms.ToolStripSplitButton importStripButton;
+        private System.Windows.Forms.ToolStripMenuItem importOnlyCreaturesItem;
+        private System.Windows.Forms.ToolStripMenuItem importOnlyPlayersItem;
     }
 }
 

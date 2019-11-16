@@ -36,13 +36,13 @@ namespace InitiativeTracker
             }
         }
 
-        private void addButton_Click(object sender, EventArgs e)
+        private void addStripButton_Click(object sender, EventArgs e)
         {
             creatureManager.add();
             refreshPanel();
         }
 
-        private void sortButton_Click(object sender, EventArgs e)
+        private void sortStripButton_Click(object sender, EventArgs e)
         {
             creatureManager.sortByDescendingInitiative();
             refreshPanel();
