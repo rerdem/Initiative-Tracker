@@ -12,6 +12,7 @@ namespace InitiativeTracker
 
         // Create the controls.
         private TextBox nameText;
+        private CheckBox isPlayerCheckbox;
         private TextBox hpText;
         private NumericUpDown initiativeValue;
         private Label nameLabel;
@@ -23,10 +24,10 @@ namespace InitiativeTracker
         public int CreatureId { get; private set; }
 
         // Define the constructor.
-        public CreatureControl(CreatureManager inputList, int inputId, string inputName, string inputHP, int inputInitiative)
+        public CreatureControl(CreatureManager inputList, int inputId, bool inputIsPlayer, string inputName, string inputHP, int inputInitiative)
         {
             creatureManager = inputList;
-            InitializeComponent(inputId, inputName, inputHP, inputInitiative);
+            InitializeComponent(inputId, inputIsPlayer, inputName, inputHP, inputInitiative);
         }
 
         public string getName()
@@ -40,13 +41,14 @@ namespace InitiativeTracker
         }
 
         // Initialize the control elements.
-        public void InitializeComponent(int inputId, string inputName, string inputHP, int inputInitiative)
+        public void InitializeComponent(int inputId, bool inputIsPlayer, string inputName, string inputHP, int inputInitiative)
         {
             CreatureId = inputId;
 
            // Initialize the controls.
             creaturePanel = new Panel();
             nameText = new TextBox();
+            isPlayerCheckbox = new CheckBox();
             hpText = new TextBox();
             initiativeValue = new NumericUpDown();
             nameLabel = new Label();
@@ -63,6 +65,13 @@ namespace InitiativeTracker
             nameLabel.Size = new Size(80, 25);
             nameLabel.Text = "Name:";
             nameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+
+            isPlayerCheckbox.Location = new Point(143, 3);
+            isPlayerCheckbox.Size = new Size(70, 25);
+            isPlayerCheckbox.Text = "Is Player:";
+            isPlayerCheckbox.Checked = inputIsPlayer;
+            isPlayerCheckbox.CheckAlign = ContentAlignment.MiddleRight;
+            isPlayerCheckbox.CheckStateChanged += IsPlayer_CheckStateChanged;
 
             nameText.Location = new Point(3, 28);
             nameText.Size = new Size(210, 30);
@@ -106,6 +115,7 @@ namespace InitiativeTracker
             creaturePanel.Controls.AddRange(new Control[]
             {
             nameLabel,
+            isPlayerCheckbox,
             nameText,
             hpLabel,
             hpText,
@@ -118,6 +128,11 @@ namespace InitiativeTracker
 
             // Size the user control.
             Size = new Size(400, 67);
+        }
+
+        private void IsPlayer_CheckStateChanged(object sender, EventArgs e)
+        {
+            creatureManager.updatePlayerStatus(CreatureId, isPlayerCheckbox.Checked);
         }
 
         private void InitiativeValue_ValueChanged(object sender, EventArgs e)

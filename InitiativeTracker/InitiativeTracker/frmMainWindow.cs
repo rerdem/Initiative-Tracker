@@ -32,7 +32,7 @@ namespace InitiativeTracker
 
             foreach (Creature creature in creatureManager.CreatureList)
             {
-                flowLayoutPanel.Controls.Add(new CreatureControl(creatureManager, creature.Id, creature.Name, creature.HP, creature.Initiative));
+                flowLayoutPanel.Controls.Add(new CreatureControl(creatureManager, creature.Id, creature.IsPlayer, creature.Name, creature.HP, creature.Initiative));
             }
         }
 
