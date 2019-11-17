@@ -10,10 +10,10 @@ namespace InitiativeTracker
     public class Creature
     {
         public int Id { get; }
-        public bool IsPlayer { get; private set; }
-        public string Name { get; private set; }
-        public string HP { get; private set; }
-        public int Initiative { get; private set; }
+        public bool IsPlayer { get; set; }
+        public string Name { get; set; }
+        public string HP { get; set; }
+        public int Initiative { get; set; }
 
         public Creature(int id, bool player, string name, string hp, int initiative)
         {
@@ -21,26 +21,6 @@ namespace InitiativeTracker
             IsPlayer = player;
             Name = name;
             HP = hp;
-            Initiative = initiative;
-        }
-
-        public void updatePlayerStatus(bool isPlayer)
-        {
-            IsPlayer = isPlayer;
-        }
-
-        public void updateName(string name)
-        {
-            Name = name;
-        }
-
-        public void updateHP(string hp)
-        {
-            HP = hp;
-        }
-
-        public void updateInitiative(int initiative)
-        {
             Initiative = initiative;
         }
     }

@@ -46,19 +46,19 @@ namespace InitiativeTracker
         public void updatePlayerStatus(int id, bool isPlayer)
         {
             int index = creatureList.FindIndex(c => c.Id == id);
-            creatureList.ElementAt(index).updatePlayerStatus(isPlayer);
+            creatureList.ElementAt(index).IsPlayer = isPlayer;
         }
 
         public void updateName(int id, string name)
         {
             int index = creatureList.FindIndex(c => c.Id == id);
-            creatureList.ElementAt(index).updateName(name);
+            creatureList.ElementAt(index).Name = name;
         }
 
         public void updateHP(int id, string hp)
         {
             int index = creatureList.FindIndex(c => c.Id == id);
-            creatureList.ElementAt(index).updateHP(hp);
+            creatureList.ElementAt(index).HP = hp;
         }
 
         public void updateInitiative(int id, int initiative)
@@ -74,7 +74,7 @@ namespace InitiativeTracker
             }
 
             int index = creatureList.FindIndex(c => c.Id == id);
-            creatureList.ElementAt(index).updateInitiative(initiative);
+            creatureList.ElementAt(index).Initiative = initiative;
         }
 
         public void remove(int id)
@@ -90,6 +90,41 @@ namespace InitiativeTracker
         public void exportCurrentEncounter(string path)
         {
             ImportExport.exportToJSON(path, creatureList);
+        }
+
+        /// <summary>
+        /// replaces current creature list with full imported list from JSON file
+        /// </summary>
+        /// <param name="path">JSON file path</param>
+        public void importEncounter(string path)
+        {
+            List<Creature> importedCreatureList = ImportExport.importFromJson(path);
+
+            creatureList.Clear();
+
+            foreach (Creature c in importedCreatureList)
+            {
+                //Debug.WriteLine(c.IsPlayer);
+                add(c.IsPlayer, c.Name, c.HP, c.Initiative);
+            }
+        }
+
+        /// <summary>
+        /// adds the imported entities from the JSON file to the current creature list
+        /// </summary>
+        /// <param name="path">JSON file path</param>
+        /// <param name="importPlayers">true imports only player characters, false imports only creatures (analogous to isPlayer property of Creatures)</param>
+        public void importEncounter(string path, bool importPlayers)
+        {
+            List<Creature> importedCreatureList = ImportExport.importFromJson(path);
+
+            foreach (Creature c in importedCreatureList)
+            {
+                if (c.IsPlayer == importPlayers)
+                {
+                    add(c.IsPlayer, c.Name, c.HP, c.Initiative);
+                }
+            }
         }
     }
 }

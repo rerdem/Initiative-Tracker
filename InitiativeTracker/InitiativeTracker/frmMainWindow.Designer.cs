@@ -79,13 +79,13 @@
             this.importStripButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.importOnlyCreaturesItem,
             this.importOnlyPlayersItem});
-            this.importStripButton.Enabled = false;
             this.importStripButton.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
             this.importStripButton.Image = ((System.Drawing.Image)(resources.GetObject("importStripButton.Image")));
             this.importStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.importStripButton.Name = "importStripButton";
             this.importStripButton.Size = new System.Drawing.Size(91, 29);
             this.importStripButton.Text = "Import";
+            this.importStripButton.ButtonClick += new System.EventHandler(this.importStripButton_ButtonClick);
             // 
             // importOnlyCreaturesItem
             // 
@@ -93,6 +93,7 @@
             this.importOnlyCreaturesItem.Name = "importOnlyCreaturesItem";
             this.importOnlyCreaturesItem.Size = new System.Drawing.Size(196, 22);
             this.importOnlyCreaturesItem.Text = "Import Only Creatures";
+            this.importOnlyCreaturesItem.Click += new System.EventHandler(this.importOnlyCreaturesItem_Click);
             // 
             // importOnlyPlayersItem
             // 
@@ -100,6 +101,7 @@
             this.importOnlyPlayersItem.Name = "importOnlyPlayersItem";
             this.importOnlyPlayersItem.Size = new System.Drawing.Size(196, 22);
             this.importOnlyPlayersItem.Text = "Import Only Players";
+            this.importOnlyPlayersItem.Click += new System.EventHandler(this.importOnlyPlayersItem_Click);
             // 
             // exportStripButton
             // 
@@ -146,6 +148,7 @@
             this.ClientSize = new System.Drawing.Size(434, 657);
             this.Controls.Add(this.mainToolStrip);
             this.Controls.Add(this.flowLayoutPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMainWindow";
             this.Text = "Initiative Tracker";
             this.mainToolStrip.ResumeLayout(false);
