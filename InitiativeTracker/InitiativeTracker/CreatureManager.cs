@@ -10,6 +10,7 @@ namespace InitiativeTracker
     {
         private List<Creature> creatureList;
         private int idCounter;
+        private CreatureImportExport ImportExport { get; }
 
         internal List<Creature> CreatureList { get => creatureList; }
 
@@ -17,6 +18,7 @@ namespace InitiativeTracker
         {
             creatureList = new List<Creature>();
             idCounter = 0;
+            ImportExport = new CreatureImportExport();
         }
 
         public void add()
@@ -83,6 +85,11 @@ namespace InitiativeTracker
         public void sortByDescendingInitiative()
         {
             creatureList = creatureList.OrderByDescending(c => c.Initiative).ToList();
+        }
+
+        public void exportCurrentEncounter(string path)
+        {
+            ImportExport.exportToJSON(path, creatureList);
         }
     }
 }

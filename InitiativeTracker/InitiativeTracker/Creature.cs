@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace InitiativeTracker
 {
     
-    class Creature
+    public class Creature
     {
         public int Id { get; }
         public bool IsPlayer { get; private set; }

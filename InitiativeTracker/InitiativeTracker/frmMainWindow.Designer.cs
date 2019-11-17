@@ -31,13 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainWindow));
             this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.mainToolStrip = new System.Windows.Forms.ToolStrip();
-            this.sortStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.addStripButton = new System.Windows.Forms.ToolStripButton();
-            this.exportStripButton = new System.Windows.Forms.ToolStripButton();
             this.importStripButton = new System.Windows.Forms.ToolStripSplitButton();
             this.importOnlyCreaturesItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importOnlyPlayersItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.addStripButton = new System.Windows.Forms.ToolStripButton();
+            this.sortStripButton = new System.Windows.Forms.ToolStripButton();
             this.mainToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,44 +73,6 @@
             this.mainToolStrip.TabIndex = 2;
             this.mainToolStrip.Text = "toolStrip1";
             // 
-            // sortStripButton
-            // 
-            this.sortStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.sortStripButton.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.sortStripButton.Image = ((System.Drawing.Image)(resources.GetObject("sortStripButton.Image")));
-            this.sortStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.sortStripButton.Name = "sortStripButton";
-            this.sortStripButton.Size = new System.Drawing.Size(55, 29);
-            this.sortStripButton.Text = "Sort";
-            this.sortStripButton.Click += new System.EventHandler(this.sortStripButton_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 32);
-            // 
-            // addStripButton
-            // 
-            this.addStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.addStripButton.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.addStripButton.Image = ((System.Drawing.Image)(resources.GetObject("addStripButton.Image")));
-            this.addStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.addStripButton.Name = "addStripButton";
-            this.addStripButton.Size = new System.Drawing.Size(53, 29);
-            this.addStripButton.Text = "Add";
-            this.addStripButton.Click += new System.EventHandler(this.addStripButton_Click);
-            // 
-            // exportStripButton
-            // 
-            this.exportStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.exportStripButton.Enabled = false;
-            this.exportStripButton.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.exportStripButton.Image = ((System.Drawing.Image)(resources.GetObject("exportStripButton.Image")));
-            this.exportStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.exportStripButton.Name = "exportStripButton";
-            this.exportStripButton.Size = new System.Drawing.Size(77, 29);
-            this.exportStripButton.Text = "Export";
-            // 
             // importStripButton
             // 
             this.importStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -138,6 +100,44 @@
             this.importOnlyPlayersItem.Name = "importOnlyPlayersItem";
             this.importOnlyPlayersItem.Size = new System.Drawing.Size(196, 22);
             this.importOnlyPlayersItem.Text = "Import Only Players";
+            // 
+            // exportStripButton
+            // 
+            this.exportStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.exportStripButton.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.exportStripButton.Image = ((System.Drawing.Image)(resources.GetObject("exportStripButton.Image")));
+            this.exportStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.exportStripButton.Name = "exportStripButton";
+            this.exportStripButton.Size = new System.Drawing.Size(77, 29);
+            this.exportStripButton.Text = "Export";
+            this.exportStripButton.Click += new System.EventHandler(this.exportStripButton_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 32);
+            // 
+            // addStripButton
+            // 
+            this.addStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.addStripButton.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.addStripButton.Image = ((System.Drawing.Image)(resources.GetObject("addStripButton.Image")));
+            this.addStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.addStripButton.Name = "addStripButton";
+            this.addStripButton.Size = new System.Drawing.Size(53, 29);
+            this.addStripButton.Text = "Add";
+            this.addStripButton.Click += new System.EventHandler(this.addStripButton_Click);
+            // 
+            // sortStripButton
+            // 
+            this.sortStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.sortStripButton.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.sortStripButton.Image = ((System.Drawing.Image)(resources.GetObject("sortStripButton.Image")));
+            this.sortStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.sortStripButton.Name = "sortStripButton";
+            this.sortStripButton.Size = new System.Drawing.Size(55, 29);
+            this.sortStripButton.Text = "Sort";
+            this.sortStripButton.Click += new System.EventHandler(this.sortStripButton_Click);
             // 
             // frmMainWindow
             // 
