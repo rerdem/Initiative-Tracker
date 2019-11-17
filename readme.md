@@ -5,7 +5,3 @@ This is a small application that allows the user to track combat initiative in t
 
 ## Screenshots
 ![Alt text](screenshots/InitiativeTracker.jpg?raw=true "Initiative Tracker Main Window")
-
-## Planned Features
-* Ability to export an encounter
-* Ability to import previously saved encounters (full encounters or selectively only creatures/player characters)
