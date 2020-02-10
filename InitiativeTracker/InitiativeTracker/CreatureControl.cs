@@ -24,10 +24,10 @@ namespace InitiativeTracker
         public int CreatureId { get; private set; }
 
         // Define the constructor.
-        public CreatureControl(CreatureManager inputList, int inputId, bool inputIsPlayer, string inputName, string inputHP, int inputInitiative)
+        public CreatureControl(CreatureManager inputList, int inputId, bool inputIsPlayer, string inputName, string inputHP, int inputInitiative, bool inputActive)
         {
             creatureManager = inputList;
-            InitializeComponent(inputId, inputIsPlayer, inputName, inputHP, inputInitiative);
+            InitializeComponent(inputId, inputIsPlayer, inputName, inputHP, inputInitiative, inputActive);
         }
 
         public string getName()
@@ -41,7 +41,7 @@ namespace InitiativeTracker
         }
 
         // Initialize the control elements.
-        public void InitializeComponent(int inputId, bool inputIsPlayer, string inputName, string inputHP, int inputInitiative)
+        public void InitializeComponent(int inputId, bool inputIsPlayer, string inputName, string inputHP, int inputInitiative, bool inputActive)
         {
             CreatureId = inputId;
 
@@ -57,9 +57,18 @@ namespace InitiativeTracker
             deleteButton = new Button();
 
             // Set control settings
-            creaturePanel.BorderStyle = BorderStyle.FixedSingle;
             creaturePanel.Location = new Point(0, 0);
             creaturePanel.Size = new Size(400, 67);
+            if (inputActive)
+            {
+                creaturePanel.BorderStyle = BorderStyle.Fixed3D;
+                creaturePanel.BackColor = Color.LightGreen;
+            }
+            else
+            {
+                creaturePanel.BorderStyle = BorderStyle.FixedSingle;
+                creaturePanel.BackColor = DefaultBackColor;
+            }
             
             nameLabel.Location = new Point(3, 3);
             nameLabel.Size = new Size(80, 25);
@@ -153,7 +162,6 @@ namespace InitiativeTracker
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             creatureManager.remove(CreatureId);
-            this.Dispose();
         }
     }
 }

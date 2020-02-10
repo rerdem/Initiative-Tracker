@@ -18,7 +18,12 @@ namespace InitiativeTracker
         public frmMainWindow(CreatureManager inputCreatureManager)
         {
             creatureManager = inputCreatureManager;
+            creatureManager.CreatureRemoved += new EventHandler(creatureManager_CreatureRemoved);
+            
             InitializeComponent();
+            
+            refreshPanel();
+            refreshStatusbar();
         }
 
         private void refreshPanel()
@@ -32,7 +37,22 @@ namespace InitiativeTracker
 
             foreach (Creature creature in creatureManager.CreatureList)
             {
-                flowLayoutPanel.Controls.Add(new CreatureControl(creatureManager, creature.Id, creature.IsPlayer, creature.Name, creature.HP, creature.Initiative));
+                flowLayoutPanel.Controls.Add(new CreatureControl(creatureManager, creature.Id, creature.IsPlayer, creature.Name, creature.HP, creature.Initiative, creature.IsActive));
+            }
+        }
+
+        private void refreshStatusbar()
+        {
+            if (creatureManager.InCombat)
+            {
+                roundLabel.Visible = true;
+                roundNumberLabel.Visible = true;
+                roundNumberLabel.Text = creatureManager.RoundCounter.ToString();
+            }
+            else
+            {
+                roundLabel.Visible = false;
+                roundNumberLabel.Visible = false;
             }
         }
 
@@ -120,6 +140,40 @@ namespace InitiativeTracker
                 }
             }
             refreshPanel();
+        }
+
+        private void startStripButton_Click(object sender, EventArgs e)
+        {
+            creatureManager.startCombat();
+            refreshPanel();
+            refreshStatusbar();
+        }
+
+        private void stopStripButton_Click(object sender, EventArgs e)
+        {
+            creatureManager.stopCombat();
+            refreshPanel();
+            refreshStatusbar();
+        }
+
+        private void prevStripButton_Click(object sender, EventArgs e)
+        {
+            creatureManager.regressCombat();
+            refreshPanel();
+            refreshStatusbar();
+        }
+
+        private void nextStripButton_Click(object sender, EventArgs e)
+        {
+            creatureManager.progressCombat();
+            refreshPanel();
+            refreshStatusbar();
+        }
+
+        private void creatureManager_CreatureRemoved(object sender, EventArgs e)
+        {
+            refreshPanel();
+            refreshStatusbar();
         }
     }
 }
